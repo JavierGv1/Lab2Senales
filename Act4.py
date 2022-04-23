@@ -6,7 +6,7 @@ u = lambda t: np.piecewise(t,t>=0,[1,0])
 
 #variables de proporcionalidad y corrimiento
 
-corr= int(input("Ingrese el factor de corrimiento :"))
+corr= int(input("Ingrese el factor de corrimiento (ingrese valores mayores a 100 para su mejor visualizacion):"))
 
 prop = int(input("Ingrese el factor de proporcionalidad :"))
 
