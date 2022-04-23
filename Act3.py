@@ -53,16 +53,16 @@ conv14= signal.convolve(triangular,exp_dec,mode='same')/sum(exp_dec)
 #========================================================================
 
 #Exponencial decreciente - cuadrada
-conv21= signal.convolve(cuadrada,exp_crec,mode='same')
+conv21= signal.convolve(cuadrada,exp_crec,mode='same')/sum(exp_crec)
 
 #Exponencial decreciente - senoidal
-conv22= signal.convolve(senoidal,exp_crec,mode='same')
+conv22= signal.convolve(senoidal,exp_crec,mode='same')/sum(exp_crec)
 
 #Exponencial decreciente - dientes de sierra
-conv23= signal.convolve(d_sierra,exp_crec,mode='same')
+conv23= signal.convolve(d_sierra,exp_crec,mode='same')/sum(exp_crec)
 
 #Exponencial decreciente - triangular
-conv24= signal.convolve(triangular,exp_crec,mode='same')
+conv24= signal.convolve(triangular,exp_crec,mode='same')/sum(exp_crec)
 
 #========================================================================
 
