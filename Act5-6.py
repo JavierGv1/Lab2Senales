@@ -70,6 +70,8 @@ fig = plt.figure()
 ax = fig.add_subplot()
 ax.plot(t,conv32)
 ax.set_title('Señal Senoidal - Impulso.')
+ax.set_xlabel('Segundos')
+ax.set_ylabel('Metros')
 ax.margins(0,0.1)
 ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiacos*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
@@ -85,6 +87,8 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciacos*1000,2))+' [m
 fig = plt.figure()
 ax = fig.add_subplot()
 ax.plot(t,conv31)
+ax.set_xlabel('Segundos')
+ax.set_ylabel('Metros')
 ax.set_title('Señal Cuadrada - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasqr*1000,2))+' [mJ]',
@@ -101,6 +105,8 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasqr*1000,2))+' [m
 fig = plt.figure()
 ax = fig.add_subplot()
 ax.plot(t,conv33)
+ax.set_xlabel('Segundos')
+ax.set_ylabel('Metros')
 ax.set_title('Señal Triangular - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiatriang*1000,2))+' [mJ]',
@@ -117,6 +123,8 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciatriang*1000,2))+'
 fig = plt.figure()
 ax = fig.add_subplot()
 ax.plot(t,conv34)
+ax.set_xlabel('Segundos')
+ax.set_ylabel('Metros')
 ax.set_title('Señal Diente de Sierra - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasw*1000,2))+' [mJ]',
@@ -133,6 +141,8 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasw*1000,2))+' [mW
 fig = plt.figure()
 ax = fig.add_subplot()
 ax.plot(t,conv44)
+ax.set_xlabel('Segundos')
+ax.set_ylabel('Metros')
 ax.set_title('Señal Diente de Sierra - Escalon.')
 ax.margins(0,0.1)
 ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaescalon*1000,2))+' [mJ]',
