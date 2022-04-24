@@ -6,7 +6,7 @@ import scipy.integrate as integrate
 u = lambda t: np.piecewise(t,t>=0,[1,0])
 
 #variable tiempo
-t=np.linspace(-500 , 500 , 1000 , endpoint=True)
+t=np.linspace(0,1,1000 , endpoint=True)
 t2=np.arange(-10,10,0.01)
 periodo=2*np.pi
 
@@ -68,7 +68,7 @@ potenciaescalon = round((1/periodo)*energiaescalon)
 #========================================================================
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(conv32)
+ax.plot(t,conv32)
 ax.set_title('Señal Senoidal - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiacos)+'[J]',
@@ -84,7 +84,7 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciacos)+'[W]',
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(conv31)
+ax.plot(t,conv31)
 ax.set_title('Señal Cuadrada - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiasqr)+'[J]',
@@ -100,7 +100,7 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasqr)+'[W]',
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(conv33)
+ax.plot(t,conv33)
 ax.set_title('Señal Triangular - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiatriang)+'[J]',
@@ -116,7 +116,7 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciatriang)+'[W]',
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(conv34)
+ax.plot(t,conv34)
 ax.set_title('Señal Diente de Sierra - Impulso.')
 ax.margins(0,0.1)
 ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiasw)+'[J]',
@@ -132,7 +132,7 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasw)+'[W]',
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(conv44)
+ax.plot(t,conv44)
 ax.set_title('Señal Diente de Sierra - Escalon.')
 ax.margins(0,0.1)
 ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiaescalon)+'[J]',
