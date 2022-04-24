@@ -59,16 +59,16 @@ conv14= (signal.convolve(triangular,exp_dec,mode='same')/sum(exp_dec))*prop
 #========================================================================
 
 #Exponencial decreciente - cuadrada
-conv21= signal.convolve(cuadrada,exp_crec,mode='same')*prop
+conv21= signal.convolve(cuadrada,exp_crec,mode='same')/sum(exp_crec)*prop
 
 #Exponencial decreciente - senoidal
-conv22= signal.convolve(senoidal,exp_crec,mode='same')*prop
+conv22= signal.convolve(senoidal,exp_crec,mode='same')/sum(exp_crec)*prop
 
 #Exponencial decreciente - dientes de cierra
-conv23= signal.convolve(d_sierra,exp_crec,mode='same')*prop
+conv23= signal.convolve(d_sierra,exp_crec,mode='same')/sum(exp_crec)*prop
 
 #Exponencial decreciente - triangular
-conv24= signal.convolve(triangular,exp_crec,mode='same')*prop
+conv24= signal.convolve(triangular,exp_crec,mode='same')/sum(exp_crec)*prop
 
 #========================================================================
 
@@ -87,30 +87,30 @@ conv34= signal.convolve(triangular,impulso,mode='same')*prop
 #========================================================================
 
 #Escalon - cuadrada
-conv41= signal.convolve(cuadrada,escalon,mode='same')*prop
+conv41= signal.convolve(cuadrada,escalon,mode='same')/sum(escalon)*prop
 
 #Escalon - senoidal
-conv42= signal.convolve(senoidal ,escalon,mode='same')*prop
+conv42= signal.convolve(senoidal ,escalon,mode='same')/sum(escalon)*prop
 
 #Escalon - dientes de cierra
-conv43= signal.convolve(d_sierra,escalon,mode='same')*prop
+conv43= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)*prop
 
 #Escalon - triangular
-conv44= signal.convolve(triangular,escalon,mode='same')*prop
+conv44= signal.convolve(triangular,escalon,mode='same')/sum(escalon)*prop
 
 #========================================================================
 
 #Senc - cuadrada
-conv51= signal.convolve(cuadrada,senc,mode='same')*prop
+conv51= signal.convolve(cuadrada,senc,mode='same')/sum(senc)*prop
 
 #Senc - senoidal
-conv52= signal.convolve(senoidal ,senc,mode='same')*prop
+conv52= signal.convolve(senoidal ,senc,mode='same')/sum(senc)*prop
 
 #Senc - dientes de cierra
-conv53= signal.convolve(d_sierra,senc,mode='same')*prop
+conv53= signal.convolve(d_sierra,senc,mode='same')/sum(senc)*prop
 
 #Senc - triangular
-conv54= signal.convolve(triangular,senc,mode='same')*prop
+conv54= signal.convolve(triangular,senc,mode='same')/sum(senc)*prop
 
 #========================================================================
 

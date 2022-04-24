@@ -81,30 +81,30 @@ conv34= signal.convolve(triangular,impulso,mode='same')
 #========================================================================
 
 #Escalon - cuadrada
-conv41= signal.convolve(cuadrada,escalon,mode='same')
+conv41= signal.convolve(cuadrada,escalon,mode='same')/sum(escalon)
 
 #Escalon - senoidal
-conv42= signal.convolve(senoidal ,escalon,mode='same')
+conv42= signal.convolve(senoidal ,escalon,mode='same')/sum(escalon)
 
 #Escalon - dientes de sierra
-conv43= signal.convolve(d_sierra,escalon,mode='same')
+conv43= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)
 
 #Escalon - triangular
-conv44= signal.convolve(triangular,escalon,mode='same')
+conv44= signal.convolve(triangular,escalon,mode='same')/sum(escalon)
 
 #========================================================================
 
 #Senc - cuadrada
-conv51= signal.convolve(cuadrada,senc,mode='same')
+conv51= signal.convolve(cuadrada,senc,mode='same')/sum(senc)
 
 #Senc - senoidal
-conv52= signal.convolve(senoidal ,senc,mode='same')
+conv52= signal.convolve(senoidal ,senc,mode='same')/sum(senc)
 
 #Senc - dientes de sierra
-conv53= signal.convolve(d_sierra,senc,mode='same')
+conv53= signal.convolve(d_sierra,senc,mode='same')/sum(senc)
 
 #Senc - triangular
-conv54= signal.convolve(triangular,senc,mode='same')
+conv54= signal.convolve(triangular,senc,mode='same')/sum(senc)
 
 #========================================================================
 

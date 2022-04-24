@@ -44,25 +44,25 @@ conv33= signal.convolve(d_sierra,impulso,mode='same')
 conv34= signal.convolve(triangular,impulso,mode='same')
 
 #Escalon - triangular
-conv44= signal.convolve(d_sierra,escalon,mode='same')
+conv44= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)
 
 #Calculo Energias y Potencias 
 #========================================================================
 
-energiacos = round(integrate.simps(abs(conv32),t))
-potenciacos = round((1/periodo)*energiacos)
+energiacos = round(integrate.simps(abs(conv32),t),3)
+potenciacos = round((1/periodo)*energiacos,3)
 
-energiasqr = round(integrate.simps(abs(conv31),t))
-potenciasqr = round((1/periodo)*energiasqr)
+energiasqr = round(integrate.simps(abs(conv31),t),3)
+potenciasqr = round((1/periodo)*energiasqr,3)
 
-energiasw = round(integrate.simps(abs(conv33),t))
-potenciasw = round((1/periodo)*energiasw)
+energiasw = round(integrate.simps(abs(conv33),t),3)
+potenciasw = round((1/periodo)*energiasw,3)
 
-energiatriang = round(integrate.simps(abs(conv34),t))
-potenciatriang = round((1/periodo)*energiatriang)
+energiatriang = round(integrate.simps(abs(conv34),t),3)
+potenciatriang = round((1/periodo)*energiatriang,2)
 
-energiaescalon = round(integrate.simps(abs(conv44),t))
-potenciaescalon = round((1/periodo)*energiaescalon)
+energiaescalon = round(integrate.simps(abs(conv44),t),3)
+potenciaescalon = round((1/periodo)*energiaescalon,3)
 
 #Graficos
 #========================================================================
