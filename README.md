@@ -1,1 +1,1 @@
-# Lab2Senales
+# Algoritmos Laboratorio 2 - Señales y sistemas
