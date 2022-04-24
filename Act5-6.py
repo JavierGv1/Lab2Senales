@@ -49,20 +49,20 @@ conv44= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)
 #Calculo Energias y Potencias 
 #========================================================================
 
-energiacos = round(integrate.simps(abs(conv32)**2,t),4)
-potenciacos = round((1/periodo)*energiacos,4)
+energiacos = integrate.simps(abs(conv32)**2,t)
+potenciacos = (1/periodo)*energiacos
 
-energiasqr = round(integrate.simps(abs(conv31)**2,t),4)
-potenciasqr = round((1/periodo)*energiasqr,4)
+energiasqr = integrate.simps(abs(conv31)**2,t)
+potenciasqr = (1/periodo)*energiasqr
 
-energiasw = round(integrate.simps(abs(conv33)**2,t),4)
-potenciasw = round((1/periodo)*energiasw,4)
+energiasw = integrate.simps(abs(conv33)**2,t)
+potenciasw = (1/periodo)*energiasw
 
-energiatriang = round(integrate.simps(abs(conv34)**2,t),4)
-potenciatriang = round((1/periodo)*energiatriang,4)
+energiatriang = integrate.simps(abs(conv34)**2,t)
+potenciatriang = (1/periodo)*energiatriang
 
-energiaescalon = round(integrate.simps(abs(conv44)**2,t),4)
-potenciaescalon = round((1/periodo)*energiaescalon,4)
+energiaescalon = integrate.simps(abs(conv44)**2,t)
+potenciaescalon = (1/periodo)*energiaescalon
 
 #Graficos
 #========================================================================
@@ -71,11 +71,11 @@ ax = fig.add_subplot()
 ax.plot(t,conv32)
 ax.set_title('Señal Senoidal - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiacos)+'[J]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiacos*1000,2))+' [KJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciacos)+'[W]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciacos*1000,2))+' [KW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -87,11 +87,11 @@ ax = fig.add_subplot()
 ax.plot(t,conv31)
 ax.set_title('Señal Cuadrada - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiasqr)+'[J]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasqr*1000,2))+' [KJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasqr)+'[W]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasqr*1000,2))+' [KW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -103,11 +103,11 @@ ax = fig.add_subplot()
 ax.plot(t,conv33)
 ax.set_title('Señal Triangular - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiatriang)+'[J]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiatriang*1000,2))+' [KJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciatriang)+'[W]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciatriang*1000,2))+' [KW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -119,11 +119,11 @@ ax = fig.add_subplot()
 ax.plot(t,conv34)
 ax.set_title('Señal Diente de Sierra - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiasw)+'[J]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasw*1000,2))+' [KJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasw)+'[W]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasw*1000,2))+' [KW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -135,11 +135,11 @@ ax = fig.add_subplot()
 ax.plot(t,conv44)
 ax.set_title('Señal Diente de Sierra - Escalon.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiaescalon)+'[J]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaescalon*1000,2))+' [KJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de un periodo = '+str(potenciaescalon)+'[W]',
+ax.text(0.02, 0.01, 'Potencia de un periodo = '+str(round(potenciaescalon*1000,2))+' [KW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
