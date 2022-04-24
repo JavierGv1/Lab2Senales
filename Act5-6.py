@@ -8,7 +8,7 @@ u = lambda t: np.piecewise(t,t>=0,[1,0])
 #variable tiempo
 t=np.linspace(0,1,1000 , endpoint=True)
 t2=np.arange(-10,10,0.01)
-periodo=2*np.pi
+periodo=2*np.pi+1
 
 #Onda Senoidal
 senoidal=np.sin(2*np.pi*5*t)
@@ -49,20 +49,20 @@ conv44= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)
 #Calculo Energias y Potencias 
 #========================================================================
 
-energiacos = round(integrate.simps(abs(conv32),t),3)
-potenciacos = round((1/periodo)*energiacos,3)
+energiacos = round(integrate.simps(abs(conv32)**2,t),4)
+potenciacos = round((1/periodo)*energiacos,4)
 
-energiasqr = round(integrate.simps(abs(conv31),t),3)
-potenciasqr = round((1/periodo)*energiasqr,3)
+energiasqr = round(integrate.simps(abs(conv31)**2,t),4)
+potenciasqr = round((1/periodo)*energiasqr,4)
 
-energiasw = round(integrate.simps(abs(conv33),t),3)
-potenciasw = round((1/periodo)*energiasw,3)
+energiasw = round(integrate.simps(abs(conv33)**2,t),4)
+potenciasw = round((1/periodo)*energiasw,4)
 
-energiatriang = round(integrate.simps(abs(conv34),t),3)
-potenciatriang = round((1/periodo)*energiatriang,2)
+energiatriang = round(integrate.simps(abs(conv34)**2,t),4)
+potenciatriang = round((1/periodo)*energiatriang,4)
 
-energiaescalon = round(integrate.simps(abs(conv44),t),3)
-potenciaescalon = round((1/periodo)*energiaescalon,3)
+energiaescalon = round(integrate.simps(abs(conv44)**2,t),4)
+potenciaescalon = round((1/periodo)*energiaescalon,4)
 
 #Graficos
 #========================================================================
