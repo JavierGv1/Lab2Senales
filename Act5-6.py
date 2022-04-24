@@ -71,14 +71,14 @@ ax = fig.add_subplot()
 ax.plot(t,conv32)
 ax.set_title('Señal Senoidal - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiacos)+'[J]',
-        verticalalignment='bottom', horizontalalignment='right',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiacos)+'[J]',
+        verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciacos)+'[W]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 
 #========================================================================
 
@@ -87,14 +87,14 @@ ax = fig.add_subplot()
 ax.plot(t,conv31)
 ax.set_title('Señal Cuadrada - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiasqr)+'[J]',
-        verticalalignment='bottom', horizontalalignment='right',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiasqr)+'[J]',
+        verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasqr)+'[W]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 
 #========================================================================
 
@@ -103,14 +103,14 @@ ax = fig.add_subplot()
 ax.plot(t,conv33)
 ax.set_title('Señal Triangular - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiatriang)+'[J]',
-        verticalalignment='bottom', horizontalalignment='right',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiatriang)+'[J]',
+        verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciatriang)+'[W]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 
 #========================================================================
 
@@ -119,14 +119,14 @@ ax = fig.add_subplot()
 ax.plot(t,conv34)
 ax.set_title('Señal Diente de Sierra - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiasw)+'[J]',
-        verticalalignment='bottom', horizontalalignment='right',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiasw)+'[J]',
+        verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciasw)+'[W]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
 
 #========================================================================
 
@@ -135,13 +135,13 @@ ax = fig.add_subplot()
 ax.plot(t,conv44)
 ax.set_title('Señal Diente de Sierra - Escalon.')
 ax.margins(0,0.1)
-ax.text(0.98, 0.01, 'Energia de la onda = '+str(energiaescalon)+'[J]',
-        verticalalignment='bottom', horizontalalignment='right',
-        transform=ax.transAxes,
-        color='black', fontsize=10)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(potenciaescalon)+'[W]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(energiaescalon)+'[J]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='black', fontsize=10)
+        color='black', fontsize=12)
+ax.text(0.02, 0.01, 'Potencia de un periodo = '+str(potenciaescalon)+'[W]',
+        verticalalignment='bottom', horizontalalignment='left',
+        transform=ax.transAxes,
+        color='black', fontsize=12)
         
 plt.show()
