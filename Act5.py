@@ -28,7 +28,6 @@ impulso=(u(t2)-u(t2-0.01))
 #Escalon
 escalon=u(t2)
 
-
 #Convluciones
 #========================================================================
 
@@ -46,7 +45,6 @@ conv34= signal.convolve(triangular,impulso,mode='same')
 
 #Escalon - triangular
 conv44= signal.convolve(d_sierra,escalon,mode='same')
-
 
 #Calculo Energias y Potencias 
 #========================================================================
