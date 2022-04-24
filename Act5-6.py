@@ -6,78 +6,74 @@ import scipy.integrate as integrate
 u = lambda t: np.piecewise(t,t>=0,[1,0])
 
 #variable tiempo
-t=np.linspace(0,1,1000 , endpoint=True)
-t2=np.arange(-10,10,0.01)
-periodo=2*np.pi+1
+t=np.arange(-10,10,0.01)
+periodo=2*np.pi
 
-#Onda Senoidal
-senoidal=np.sin(2*np.pi*5*t)
+#Exponencial decreciente
+exp_dec = np.exp(-t)*(u(t)-u(t-1))
 
-#Onda Cuadrada
-cuadrada= signal.square(2*np.pi*5*t)
-
-#Onda Triangular
-triangular= signal.sawtooth(2*np.pi*5*t,width=0.5)
-
-#Onda Dientes de Sierra
-d_sierra= signal.sawtooth(2*np.pi*5*t)
+#Exponencial creciente
+exp_crec = np.exp(t)*(u(t)-u(t-1))
 
 #Impulso
-impulso=(u(t2)-u(t2-0.01))
+impulso=u(t)-u(t-0.01)
 
 #Escalon
-escalon=u(t2)
+escalon=u(t)
+
+#Seno cardinal
+senc=np.sinc(t)
 
 #Convluciones
 #========================================================================
 
-#Impulso - cuadrada
-conv31= signal.convolve(cuadrada,impulso,mode='same')
+#Exponencial decreciente - Exponencial creciente
+conv1= signal.convolve(exp_dec,exp_crec,mode='same')/sum(exp_dec)
 
-#Impulso - senoidal
-conv32= signal.convolve(senoidal ,impulso,mode='same')
+#Exponencial creciente - Impulso
+conv2= signal.convolve(exp_crec,impulso,mode='same')
 
-#Impulso - dientes de cierra
-conv33= signal.convolve(d_sierra,impulso,mode='same')
+#Impulso - Escalon
+conv3= signal.convolve(impulso,escalon,mode='same')
 
-#Impulso - triangular
-conv34= signal.convolve(triangular,impulso,mode='same')
+#Escalon - Seno cardinal
+conv4= signal.convolve(escalon,senc,mode='same')/sum(senc)
 
-#Escalon - triangular
-conv44= signal.convolve(d_sierra,escalon,mode='same')/sum(escalon)
+#Seno cardinal - Exponencial decreciente
+conv5= signal.convolve(senc,exp_dec,mode='same')/sum(senc)
 
 #Calculo Energias y Potencias 
 #========================================================================
 
-energiacos = integrate.simps(abs(conv32)**2,t)
-potenciacos = (1/periodo)*energiacos
+energiaconv1 = integrate.simps(abs(conv1)**2,t)
+potenciaconv1 = (1/periodo)*energiaconv1
 
-energiasqr = integrate.simps(abs(conv31)**2,t)
-potenciasqr = (1/periodo)*energiasqr
+energiaconv2= integrate.simps(abs(conv2)**2,t)
+potenciaconv2 = (1/periodo)*energiaconv2
 
-energiasw = integrate.simps(abs(conv33)**2,t)
-potenciasw = (1/periodo)*energiasw
+energiaconv3 = integrate.simps(abs(conv3)**2,t)
+potenciaconv3 = (1/periodo)*energiaconv3
 
-energiatriang = integrate.simps(abs(conv34)**2,t)
-potenciatriang = (1/periodo)*energiatriang
+energiaconv4 = integrate.simps(abs(conv4)**2,t)
+potenciaconv4 = (1/periodo)*energiaconv4
 
-energiaescalon = integrate.simps(abs(conv44)**2,t)
-potenciaescalon = (1/periodo)*energiaescalon
+energiaconv5 = integrate.simps(abs(conv5)**2,t)
+potenciaconv5 = (1/periodo)*energiaconv5
 
 #Graficos
 #========================================================================
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(t,conv32)
-ax.set_title('Señal Senoidal - Impulso.')
+ax.plot(t,conv1)
+ax.set_title('Exponencial decreciente - Exponencial creciente.')
 ax.set_xlabel('Segundos')
 ax.set_ylabel('Metros')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiacos*1000,2))+' [mJ]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaconv1*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciacos*1000,2))+' [mW]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciaconv1*1000,2))+' [mW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -86,16 +82,16 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciacos*1000,2))+' [m
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(t,conv31)
+ax.plot(t,conv2)
 ax.set_xlabel('Segundos')
 ax.set_ylabel('Metros')
-ax.set_title('Señal Cuadrada - Impulso.')
+ax.set_title('Exponencial creciente - Impulso.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasqr*1000,2))+' [mJ]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaconv2*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasqr*1000,2))+' [mW]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciaconv2*1000,2))+' [mW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -104,16 +100,16 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasqr*1000,2))+' [m
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(t,conv33)
+ax.plot(t,conv3)
 ax.set_xlabel('Segundos')
 ax.set_ylabel('Metros')
-ax.set_title('Señal Triangular - Impulso.')
+ax.set_title('Impulso - Escalon.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiatriang*1000,2))+' [mJ]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaconv3*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciatriang*1000,2))+' [mW]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciaconv3*1000,2))+' [mW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -122,16 +118,16 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciatriang*1000,2))+'
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(t,conv34)
+ax.plot(t,conv4)
 ax.set_xlabel('Segundos')
 ax.set_ylabel('Metros')
-ax.set_title('Señal Diente de Sierra - Impulso.')
+ax.set_title('Escalon - Seno cardinal.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiasw*1000,2))+' [mJ]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaconv4*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasw*1000,2))+' [mW]',
+ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciaconv4*1000,2))+' [mW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
@@ -140,16 +136,16 @@ ax.text(0.02, 0.01, 'Potencia de la onda = '+str(round(potenciasw*1000,2))+' [mW
 
 fig = plt.figure()
 ax = fig.add_subplot()
-ax.plot(t,conv44)
+ax.plot(t,conv5)
 ax.set_xlabel('Segundos')
 ax.set_ylabel('Metros')
-ax.set_title('Señal Diente de Sierra - Escalon.')
+ax.set_title('Seno cardinal - Exponencial decreciente.')
 ax.margins(0,0.1)
-ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaescalon*1000,2))+' [mJ]',
+ax.text(0.02, 0.07, 'Energia de la onda = '+str(round(energiaconv5*1000,2))+' [mJ]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
-ax.text(0.02, 0.01, 'Potencia de un periodo = '+str(round(potenciaescalon*1000,2))+' [mW]',
+ax.text(0.02, 0.01, 'Potencia de un periodo = '+str(round(potenciaconv5*1000,2))+' [mW]',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
         color='black', fontsize=12)
